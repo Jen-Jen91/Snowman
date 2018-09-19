@@ -9,15 +9,11 @@ class Game
   end
 
 
-  def add_guessed_letter(letter)
+  def guess(letter)
     if @guessed_letters.include?(letter) == false
       @guessed_letters.push(letter)
     end
-  end
 
-
-  def wrong_guess(letter)
-    add_guessed_letter(letter)
     if @hidden_word.include?(letter) == false
       @player.lose_life
     end
@@ -56,39 +52,3 @@ class Game
   # end
 
 end
-
-
-
-
-  # def get_word(hidden_word)
-  #   p "Please provide a word/phrase: "
-  #   word = gets.chomp.downcase
-  #
-  #   @hidden_word += word
-  #   hidden_word.word += word
-  #
-  #   return word
-  #
-  # end
-  #
-  #
-  # def get_letter(hidden_word)
-  #   p "Guess a letter: "
-  #   guess = gets.chomp.downcase
-  #
-  #   @guessed_letters.push(guess)
-  #   hidden_word.guessed_letters.push(guess)
-  #
-  #   return guess
-  # end
-  #
-  #
-  # def wrong_guess(hidden_word, player)
-  #
-  #   guess = get_letter(hidden_word)
-  #
-  #   if hidden_word.include?(guess) == false
-  #     player.lives -= 1
-  #   end
-  #
-  # end

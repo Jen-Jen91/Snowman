@@ -31,21 +31,33 @@ class GameTest < MiniTest::Test
   end
 
 
-  def test_add_guessed_letter()
-    @game.add_guessed_letter("x")
+  def test_guess_letter()
+    @game.guess("x")
     assert_equal(1, @game.guessed_letters.count())
   end
 
 
-  def test_add_guessed_letter__no_duplicates()
-    @game.add_guessed_letter("x")
-    @game.add_guessed_letter("x")
+  def test_guess__no_duplicates()
+    @game.guess("x")
+    @game.guess("x")
     assert_equal(1, @game.guessed_letters.count())
+  end
+
+
+  def test_wrong_guess__loses_life()
+    @game.guess("x")
+    assert_equal(5, @game.player.lives())
+  end
+
+
+  def test_wrong_guess__false()
+    @game.guess("o")
+    assert_equal(6, @game.player.lives())
   end
 
 
   def test_reveal_word()
-    @game.add_guessed_letter("o")
+    @game.guess("o")
     assert_equal("**o***", @game.reveal_word())
   end
 
@@ -57,19 +69,13 @@ class GameTest < MiniTest::Test
 
 
   def test_game_is_lost__true_after_six_fails()
-    @game.add_guessed_letter("x")
-    @game.wrong_guess("x")
-    @game.add_guessed_letter("z")
-    @game.wrong_guess("z")
-    @game.add_guessed_letter("b")
-    @game.wrong_guess("b")
-    @game.add_guessed_letter("c")
-    @game.wrong_guess("c")
-    @game.add_guessed_letter("d")
-    @game.wrong_guess("d")
+    @game.guess("x")
+    @game.guess("z")
+    @game.guess("b")
+    @game.guess("c")
+    @game.guess("d")
     refute(@game.is_lost?)
-    @game.add_guessed_letter("i")
-    @game.wrong_guess("i")
+    @game.guess("i")
     assert_equal(0, @game.is_lost?)
   end
 
@@ -80,13 +86,13 @@ class GameTest < MiniTest::Test
 
 
   def test_game_is_won__true
-    @game.add_guessed_letter("f")
-    @game.add_guessed_letter("r")
-    @game.add_guessed_letter("o")
-    @game.add_guessed_letter("s")
-    @game.add_guessed_letter("t")
+    @game.guess("f")
+    @game.guess("r")
+    @game.guess("o")
+    @game.guess("s")
+    @game.guess("t")
     refute(@game.is_won?)
-    @game.add_guessed_letter("y")
+    @game.guess("y")
     assert_equal("frosty", @game.is_won?)
   end
 
