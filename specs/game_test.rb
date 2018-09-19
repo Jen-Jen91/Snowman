@@ -15,9 +15,22 @@ class GameTest < MiniTest::Test
     @game1 = Game.new(@player1, @frosty)
   end
 
-  def test_game_has_player
+  def test_game_has_player()
     assert_equal("John", @game1.player.name)
   end
+
+  def test_game_has_hidden_word()
+    assert_equal("Frosty the Snowman", @game1.hidden_word.word())
+  end
+
+
+  def test_has_empty_guessed_letters_array
+    assert_equal(0, @game1.guessed_letters.count)
+  end
+
+
+
+
 
 
 end

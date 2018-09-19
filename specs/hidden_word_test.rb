@@ -1,6 +1,7 @@
 require("minitest/autorun")
 require("minitest/rg")
 require_relative("../hidden_word.rb")
+require_relative("../game.rb")
 
 class HiddenWordTest < MiniTest::Test
 
@@ -13,16 +14,12 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("Frosty the Snowman", @hidden_word1.word)
   end
 
-  def test_hide_letters()
-    assert_equal("****** *** *******", @hidden_word1.hide("Frosty the Snowman"))
-  end
-
-  # def test_word_contains_letter__true()
-  #   assert_equal(true, @hidden_word1.contains_letter?("Frosty the Snowman", "y"))
+  # def test_hide_or_display_letters__hides()
+  #   assert_equal("****** *** *******", @hidden_word1.hide_or_display_letters("Frosty the Snowman"))
   # end
-  #
-  # def test_word_contains_letter__false()
-  #   assert_equal(false, @hidden_word1.contains_letter?("Frosty the Snowman", "x"))
+
+  # def test_hide_or_display_letters__displays()
+  #   assert_equal("**o*** *** **o****", @hidden_word1.hide_or_display_letters("Frosty the Snowman"))
   # end
 
 

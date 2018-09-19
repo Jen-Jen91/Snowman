@@ -1,10 +1,10 @@
 class Game
 
-  attr_accessor :player, :word, :guessed_letters
+  attr_accessor :player, :hidden_word, :guessed_letters
 
-  def initialize(player, word)
+  def initialize(player, hidden_word)
     @player = player
-    @word = word
+    @hidden_word = hidden_word
     @guessed_letters = []
   end
 
