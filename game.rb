@@ -9,11 +9,12 @@ class Game
   end
 
 
-  def get_word()
+  def get_word(hidden_word)
     p "Please provide a word/phrase: "
     word = gets.chomp.downcase
 
     @hidden_word += word
+    hidden_word.word += word
 
     return word
 
@@ -31,7 +32,15 @@ class Game
   end
 
 
+  def wrong_guess(hidden_word, player)
 
+    guess = get_letter(hidden_word)
+
+    if hidden_word.include?(guess) == false
+      player.lives -= 1
+    end
+
+  end
 
 
 

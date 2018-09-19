@@ -2,8 +2,8 @@ class HiddenWord
 
   attr_accessor :word, :guessed_letters
 
-  def initialize(word)
-    @word = word
+  def initialize()
+    @word = ""
     @guessed_letters = []
   end
 
