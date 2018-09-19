@@ -13,17 +13,26 @@ class HiddenWordTest < MiniTest::Test
     assert_equal("Frosty the Snowman", @hidden_word1.word)
   end
 
-  # def test_hide_letters()
-  #   assert_equal("****** *** *******", @hidden_word1.hide("Frosty the Snowman"))
+  def test_hide_letters()
+    assert_equal("****** *** *******", @hidden_word1.hide("Frosty the Snowman"))
+  end
+
+  # def test_word_contains_letter__true()
+  #   assert_equal(true, @hidden_word1.contains_letter?("Frosty the Snowman", "y"))
+  # end
+  #
+  # def test_word_contains_letter__false()
+  #   assert_equal(false, @hidden_word1.contains_letter?("Frosty the Snowman", "x"))
   # end
 
-  def test_word_contains_letter__true()
-    assert_equal(true, @hidden_word1.contains_letter?("Frosty the Snowman", "y"))
-  end
 
-  def test_word_contains_letter__false()
-    assert_equal(false, @hidden_word1.contains_letter?("Frosty the Snowman", "x"))
-  end
+
+
+
+
+
+
+
 
 
 end
