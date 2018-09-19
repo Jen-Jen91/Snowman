@@ -20,21 +20,16 @@ class Game
   end
 
 
+  def get_letter(hidden_word)
+    p "Guess a letter: "
+    guess = gets.chomp.downcase
 
+    @guessed_letters.push(guess)
+    hidden_word.guessed_letters.push(guess)
 
+    return guess
+  end
 
-
-
-
-  # def get_input
-  #   p "Guess a letter: "
-  #   guess = gets.chomp.downcase
-  #
-  #   @guessed_letters.push(guess)
-  #
-  #   return guess
-  # end
-  #
 
 
 
