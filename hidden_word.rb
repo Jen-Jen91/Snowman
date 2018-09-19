@@ -1,42 +1,35 @@
 class HiddenWord
 
-  attr_accessor :word, :guessed_letters
+  attr_accessor :hidden_word
 
-  def initialize()
-    @word = ""
-    @guessed_letters = []
+  def initialize(hidden_word)
+    @hidden_word = hidden_word
   end
 
 
-  def hide_or_display_letters(word)
+  def hide_or_display_letters(guesses = [])
 
-    letters = word.split("")
-    new_word = ""
+    letters = @hidden_word.split("")
+    displayed_word = ""
 
     for item in letters
-      if @guessed_letters.include?(item)
-        new_word += item
+      if guesses.include?(item)
+        displayed_word += item
       elsif item == " "
-        new_word += " "
-      elsif @guessed_letters.include?(item) == false
-        new_word += "*"
+        displayed_word += " "
+      elsif guesses.include?(item) == false
+        displayed_word += "*"
       end
     end
 
-    return new_word
+    return displayed_word
 
   end
 
 
-  # for item in letters
-  #   if item != " "
-  #     new_word += "*"
-  #   elsif item == " "
-  #     new_word += " "
-  #   end
-  # end
-
-
+  def include?(letter)
+    return @hidden_word.include?(letter)
+  end
 
 
 
