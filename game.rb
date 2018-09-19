@@ -4,18 +4,38 @@ class Game
 
   def initialize(player, hidden_word)
     @player = player
-    @hidden_word = hidden_word
+    @hidden_word = ""
     @guessed_letters = []
   end
 
 
-  def get_input
+  def get_word()
+    p "Please provide a word/phrase: "
+    word = gets.chomp.downcase
 
-    p "Guess a letter: "
-    guess = gets.chomp.downcase
-    return guess
+    @hidden_word += word
+
+    return word
 
   end
+
+
+
+
+
+
+
+
+  # def get_input
+  #   p "Guess a letter: "
+  #   guess = gets.chomp.downcase
+  #
+  #   @guessed_letters.push(guess)
+  #
+  #   return guess
+  # end
+  #
+
 
 
 
