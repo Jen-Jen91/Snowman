@@ -8,8 +8,4 @@ class Player
     @lives = 6
   end
 
-
-
-
-
 end
