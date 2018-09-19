@@ -31,7 +31,9 @@ class Game
   end
 
   def is_lost?()
-    return @player.lives <= 0
+    if @player.lives <= 0
+      return @player.lives
+    end
   end
 
   def is_won?()
