@@ -9,7 +9,13 @@ class Game
   end
 
 
+  def get_input
 
+    p "Guess a letter: "
+    guess = gets.chomp.downcase
+    return guess
+
+  end
 
 
 
