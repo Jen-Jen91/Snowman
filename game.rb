@@ -8,7 +8,6 @@ class Game
     @guessed_letters = []
   end
 
-
   def guess(letter)
     if @guessed_letters.include?(letter) == false
       @guessed_letters.push(letter)
@@ -19,16 +18,13 @@ class Game
     end
   end
 
-
   def reveal_word()
     @hidden_word.hide_or_display_letters(@guessed_letters)
   end
 
-
   def lives_remaining()
     return @player.lives
   end
-
 
   def is_lost?()
     if @player.lives <= 0
@@ -36,19 +32,18 @@ class Game
     end
   end
 
-  # def is_lost?()
-  #   return @player.lives <= 0
-  # end
-
-
   def is_won?()
     if reveal_word().include?("*") == false
       return reveal_word
     end
   end
 
-  # def is_won?()
-  #   #return !reveal_word().include?("*")
-  # end
+  def clear
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
+  end
 
 end

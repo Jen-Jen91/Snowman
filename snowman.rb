@@ -2,24 +2,26 @@ require_relative("./game.rb")
 require_relative("./hidden_word.rb")
 require_relative("./player.rb")
 
-puts "Please enter a word or phrase: "
+player1 = Player.new("Player 1")
+
+puts "Hi #{player1.name}! Please enter a word or phrase: "
 input = gets.chomp.downcase
 
-player = Player.new("Player 1")
+player2 = Player.new("Player 2")
 hidden_word = HiddenWord.new(input)
 
-snowman = Game.new(player, hidden_word)
+snowman = Game.new(player2, hidden_word)
 
-print %x{clear}
+snowman.clear
 
+puts "Hi #{player2.name}! Welcome to Snowman!"
 
 until snowman.is_won? || snowman.is_lost?
-  puts "Welcome to Snowman!"
-  puts "The hidden word is: #{snowman.reveal_word}"
+  puts "Your hidden word/phrase is: #{snowman.reveal_word}"
   puts "#{snowman.lives_remaining} lives remaining"
   puts "Guess a letter: "
   snowman.guess(gets.chomp[0])
-  print %x{clear}
+  snowman.clear
 end
 
 if snowman.is_won?
